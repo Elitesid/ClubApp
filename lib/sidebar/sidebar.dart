@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
+
 import '../bloc.navigation_bloc/navigation_bloc.dart';
 import '../sidebar/menu_item.dart';
 
@@ -67,7 +68,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
             children: <Widget>[
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   color: const Color(0xFF262AAA),
                   child: Column(
                     children: <Widget>[
@@ -76,19 +77,13 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                       ),
                       ListTile(
                         title: Text(
-                          "RC Smart City NM",
+                          "RC Smart City Navi Mumbai",
                           style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800),
                         ),
-                        subtitle: Text(
-                          "website link here",
-                          style: TextStyle(
-                            color: Color(0xFF1BB5FD),
-                            fontSize: 18,
-                          ),
-                        ),
+
                         leading: CircleAvatar(
                           child: Icon(
-                            Icons.perm_identity,
+                            Icons.group,
                             color: Colors.white,
                           ),
                           radius: 40,
@@ -120,19 +115,35 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                       ),
                       MenuItem(
                         icon: Icons.person,
-                        title: "About us",
+                        title: "Our Team",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.MyAccountClickedEvent);
                         },
                       ),
+                      Divider(
+                        height: 64,
+                        thickness: 0.5,
+                        color: Colors.white.withOpacity(0.3),
+                        indent: 32,
+                        endIndent: 32,
+                      ),
+                      MenuItem(
+                          icon: Icons.feedback,
+                          title: "Feedback",
+                        onTap: (){
+                            onIconPressed();
+                            BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.FeedbackClickedEvent);
+                        },
+                      ),
                       MenuItem(
                         icon: Icons.local_post_office,
                         title: "Join Us",
+                        onTap: (){
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.JoinUsClickedEvent);
+                        },
                       ),
-
-
-
                     ],
                   ),
                 ),
